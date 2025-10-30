@@ -20,8 +20,8 @@
             Ensure your application looks perfect across all environments.
           </p>
           <div class="hero-actions">
-            <button class="btn btn-primary">Run Tests</button>
-            <button class="btn btn-secondary">View Reports</button>
+            <button class="btn btn-primary" type="button">Run Tests</button>
+            <button class="btn btn-secondary" type="button">View Reports</button>
           </div>
         </section>
 
