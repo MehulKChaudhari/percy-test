@@ -23,10 +23,8 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "start": "vite",
-    "test": "vite build --mode development && testem ci",
-    "test:ember": "vite build --mode development && testem ci",
-    "test:percy": "vite build --mode test && percy exec -- testem ci",
-    "test:percy:ci": "vite build --mode test && percy exec -- testem ci"
+    "test": "concurrently \"pnpm:lint\" \"pnpm:test:*\" --names \"lint,test:\" --prefixColors auto",
+    "test:ember": "vite build --mode test && ember test --path dist"
   },
   "exports": {
     "./tests/*": "./tests/*",
@@ -49,8 +47,9 @@
     "@embroider/config-meta-loader": "^1.0.0",
     "@eslint/js": "^9.34.0",
     "@glimmer/component": "^2.0.0",
-    "@percy/cli": "^1.30.5",
+    "@percy/cli": "^1.31.1",
     "@percy/ember": "^5.0.0",
+    "@percy/sdk-utils": "^1.31.0",
     "@rollup/plugin-babel": "^6.0.4",
     "@warp-drive/ember": "~5.6.0",
     "babel-plugin-ember-template-compilation": "^2.4.1",
@@ -90,5 +89,9 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "ember-addon": {
+    "type": "app",
+    "version": 2
   }
 }
