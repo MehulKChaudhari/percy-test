@@ -1,12 +1,8 @@
 import { pageTitle } from 'ember-page-title';
-import { WelcomePage } from 'ember-welcome-page';
+import MainPage from '../components/main-page';
 
 <template>
-  {{pageTitle "PercyTest"}}
+  {{pageTitle "Percy Test Dashboard"}}
 
-  {{outlet}}
-
-  {{! The following component displays Ember's default welcome message. }}
-  <WelcomePage />
-  {{! Feel free to remove this! }}
+  <MainPage />
 </template>
