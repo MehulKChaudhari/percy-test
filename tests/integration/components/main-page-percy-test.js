@@ -3,7 +3,6 @@ import { setupRenderingTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import { hbs } from 'ember-cli-htmlbars';
 import { snapshot } from '@percy/ember';
-import MainPage from 'percy-test/components/main-page';
 
 module('Integration | Component | MainPage Percy snapshots', function (hooks) {
   setupRenderingTest(hooks);
