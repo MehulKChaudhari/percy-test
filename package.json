@@ -23,7 +23,8 @@
     "lint:js": "eslint . --cache",
     "lint:js:fix": "eslint . --fix",
     "start": "vite",
-    "test": "vite build --mode test && testem ci",
+    "test": "vite build --mode development && testem ci",
+    "test:ember": "vite build --mode development && testem ci",
     "test:percy": "vite build --mode test && percy exec -- testem ci",
     "test:percy:ci": "vite build --mode test && percy exec -- testem ci"
   },
