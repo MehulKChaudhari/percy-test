@@ -2,7 +2,7 @@
   <div class="main-page">
     <header class="header">
       <div class="container">
-        <h1 class="logo">Percy Test Dashboard</h1>
+        <h1 class="logo">Percy issue debugging</h1>
         <nav class="nav">
           <a href="#" class="nav-link">Dashboard</a>
           <a href="#" class="nav-link">Snapshots</a>
@@ -16,12 +16,12 @@
         <section class="hero">
           <h2 class="hero-title">Visual Regression Testing</h2>
           <p class="hero-description">
-            Monitor your UI changes with Percy snapshot testing. 
-            Ensure your application looks perfect across all environments.
+            Monitor your UI changes with Percy snapshot testing. Ensure your
+            application looks perfect across all environments.
           </p>
           <div class="hero-actions">
-            <button class="btn btn-primary">Run Tests</button>
-            <button class="btn btn-secondary">View Reports</button>
+            <button class="btn btn-primary" type="button">Run Tests</button>
+            <button class="btn btn-secondary" type="button">View Reports</button>
           </div>
         </section>
 
