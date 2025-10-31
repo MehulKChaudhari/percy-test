@@ -9,6 +9,13 @@ module('Acceptance | Percy snapshots', function (hooks) {
   test('Percy snapshot', async function (assert) {
     await visit('/');
 
+    // Wait for stylesheets to load
+    await waitFor('link[rel="stylesheet"]', { timeout: 3000 });
+
+    // Extra wait for styles to apply
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+
     await percySnapshot(assert);
 
     assert.ok(true);

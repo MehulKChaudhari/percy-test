@@ -3,10 +3,11 @@ module.exports = {
   project: 'percy-test-dashboard',
   discovery: {
     allowedHostnames: ['localhost'],
-    networkIdleTimeout: 750
+    networkIdleTimeout: 1500
   },
-  static: {
-    files: '**/*.css',
-    baseUrl: '/'
+  snapshot: {
+    enableJavaScript: true,
+    widths: [1280],
+    minHeight: 1024
   }
 };
