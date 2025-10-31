@@ -1,4 +1,4 @@
-import { visit, waitFor } from '@ember/test-helpers';
+import { visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
 import percySnapshot from '@percy/ember';
@@ -8,13 +8,6 @@ module('Acceptance | Percy snapshots', function (hooks) {
 
   test('Percy snapshot', async function (assert) {
     await visit('/');
-
-    // Wait for stylesheets to load
-    await waitFor('link[rel="stylesheet"]', { timeout: 3000 });
-
-    // Extra wait for styles to apply
-    await new Promise(resolve => setTimeout(resolve, 500));
-
 
     await percySnapshot(assert);
 
