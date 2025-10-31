@@ -1,6 +1,6 @@
 import { visit } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
-import { module, test } from 'qunit';
+import { module, test, waitFor } from 'qunit';
 import percySnapshot from '@percy/ember';
 
 module('Acceptance | Percy snapshots', function (hooks) {

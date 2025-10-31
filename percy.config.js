@@ -3,7 +3,7 @@ module.exports = {
   project: 'percy-test-dashboard',
   discovery: {
     allowedHostnames: ['localhost'],
-    networkIdleTimeout: 1500
+    networkIdleTimeout: 750
   },
   snapshot: {
     enableJavaScript: true,
