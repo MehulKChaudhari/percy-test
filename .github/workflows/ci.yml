@@ -5,7 +5,7 @@ on:
     branches:
       - main
       - master
-  pull_request: {}
+  pull_request:
 
 concurrency:
   group: ci-${{ github.head_ref || github.ref }}
@@ -13,6 +13,8 @@ concurrency:
 
 env:
   NODE_VERSION: 18
+  PERCY_PARALLEL_NONCE: ${{ github.run_id }}-${{ github.run_number }}
+  PERCY_PARALLEL_TOTAL: 1
 
 jobs:
   lint:
@@ -21,26 +23,40 @@ jobs:
     timeout-minutes: 3
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
-          cache: 'pnpm'
           node-version: ${{ env.NODE_VERSION }}
-      - run: pnpm install
-      - run: pnpm run lint
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run lint
+        run: pnpm run lint
 
   run-tests:
-    name: Test Ember app
+    name: Test Ember app (Percy)
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
+
       - uses: pnpm/action-setup@v4
+
       - uses: actions/setup-node@v4
         with:
-          cache: 'pnpm'
           node-version: ${{ env.NODE_VERSION }}
-      - run: pnpm install
-      - run: pnpm percy exec -- pnpm run test:ember
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run Ember tests with Percy
+        run: npx percy exec -- pnpm run test:ember
         env:
           PERCY_TOKEN: ${{ secrets.PERCY_TOKEN }}
+          PERCY_PARALLEL_NONCE: ${{ env.PERCY_PARALLEL_NONCE }}
+          PERCY_PARALLEL_TOTAL: ${{ env.PERCY_PARALLEL_TOTAL }}

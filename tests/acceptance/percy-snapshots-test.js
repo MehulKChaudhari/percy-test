@@ -1,7 +1,7 @@
-import { visit } from '@ember/test-helpers';
+import { visit, waitUntil } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-import percySnapshot from '@percy/ember';
+import percySnapshot from 'ember-percy';
 
 module('Acceptance | Percy snapshots', function (hooks) {
   setupApplicationTest(hooks);
@@ -19,4 +19,10 @@ module('Acceptance | Percy snapshots', function (hooks) {
 
     assert.dom('.main-page').exists('Main page component is rendered');
   });
+
+  test('homepage snapshot', async function () {
+    await visit('/');
+    await percySnapshot('Homepage');
+  });
+
 });
